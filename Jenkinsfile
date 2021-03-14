@@ -11,6 +11,14 @@ pipeline {
 				}
 			}
 		}
+		stage('Deploy on test') {
+			steps {
+				script {
+					env.PIPELINE_NAMESPACE = "test"
+					kubernetesDeploy configs: 'k8s/deployment-template.yaml'
+				}
+			}
+		}		
 		stage('Build') {
 			agent {
 				label "maven"
