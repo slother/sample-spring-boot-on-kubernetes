@@ -11,7 +11,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Deploy on test') {
+		stage('Deploy on test2') {
 			steps {
 				script {
 					env.PIPELINE_NAMESPACE = "test"
