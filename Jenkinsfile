@@ -10,15 +10,7 @@ pipeline {
 					sh 'ls -la'
 				}
 			}
-		}
-		stage('Deploy on test2') {
-			steps {
-				script {
-					env.PIPELINE_NAMESPACE = "test"
-					kubernetesDeploy configs: 'k8s/deployment-template.yaml'
-				}
-			}
-		}		
+		}	
 		stage('Build') {
 			agent {
 				label "maven"
@@ -37,7 +29,7 @@ pipeline {
 				sh 'mvn test'
 			}
 		}
-		stage('Image') {
+/*		stage('Image') {
 			agent {
 				label "maven"
 			}
@@ -45,6 +37,7 @@ pipeline {
 				sh 'mvn -P jib -Djib.to.auth.username=piomin -Djib.to.auth.password=Piot_123 compile jib:build'
 			}
 		}
+*/
 		stage('Deploy on test') {
 			steps {
 				script {
