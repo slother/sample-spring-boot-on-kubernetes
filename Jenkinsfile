@@ -13,7 +13,7 @@ pipeline {
 		}	
 		stage('Build') {
 			agent {
-				label "maven"
+				label "jenkins-jenkins-agent"
 			}
 			steps {
 				sh 'ls -la'
